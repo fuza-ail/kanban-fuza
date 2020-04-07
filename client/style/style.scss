@@ -1,0 +1,48 @@
+$font-stack : Arial, Helvetica, sans-serif;
+$background-body: rgb(212, 222, 228);
+$background-card: rgb(162, 165, 173);
+$background-task: rgb(255, 255, 255);
+$background-hover: #F4F5F7;
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body{
+  background: $background-body;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.global{
+  background: $background-card;
+  padding: 10px 10px;
+  border-radius: 3px;
+  width: 300px;
+  margin: 20px 5px;
+}
+.sub{
+  background: $background-task;
+  border-radius: 3px;
+  margin-top:10px;
+  margin-bottom: 10px;
+  padding: 10px 5px;
+  cursor: pointer;
+}
+.sub:hover{
+  background:$background-hover;
+}
+
+.add{
+  padding:10px 5px;
+  color: rgb(194, 194, 194);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.add:hover{
+  background:$background-hover;
+}

@@ -47,4 +47,12 @@ body {
   background: #F4F5F7;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+  background: #333333;
+  color: white;
+}
+
 /*# sourceMappingURL=style.css.map */

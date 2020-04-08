@@ -13,12 +13,12 @@ body{
   background: $background-body;
 }
 
-.container{
+.box{
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
-.global{
+.card{
   background: $background-card;
   padding: 10px 10px;
   border-radius: 3px;

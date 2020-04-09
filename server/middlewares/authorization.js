@@ -9,15 +9,18 @@ function authorization(req,res,next){
       }else{
         throw {
           status: 403,
-          mesasge : 'Unauthorized account'
+          message : 'Unauthorized account'
         }
       }
     }else{
       throw {
-        status : '404',
-        message: 'Taks not found'
+        status : 404,
+        message: 'Task not found'
       }
     }
+  })
+  .catch(err=>{
+    next(err)
   })
 }
 

@@ -12,12 +12,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull:false
       },
+      description: {
+        type: Sequelize.STRING
+      },
       category: {
         type: Sequelize.STRING,
         allowNull:false
       },
-      status: {
-        type: Sequelize.STRING
+      UserId:{
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

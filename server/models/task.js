@@ -3,33 +3,36 @@ module.exports = (sequelize, DataTypes) => {
   const Sequelize = sequelize.Sequelize;
   const Model = Sequelize.Model;
 
-  class Task extends Model{
+  class Task extends Model {
 
   }
 
   Task.init({
     title: {
-      type:DataTypes.STRING,
-      allowNull:false,
-      validate:{
-        notEmpty:true,
-        notNull:true
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        notNull: true
       }
+    },
+    description: {
+      type: DataTypes.STRING,
     },
     category: {
-      type:DataTypes.STRING,
-      allowNull:false,
-      validate:{
-        notEmpty:true,
-        notNull:true
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        notNull: true
       }
     },
-    status: DataTypes.STRING,
+    UserId: DataTypes.INTEGER,
     createdAt: new Date(),
     updatedAt: new Date()
-  },{sequelize})
+  }, { sequelize })
 
-  Task.associate = function(models) {
+  Task.associate = function (models) {
     // associations can be defined here
     Task.belongsTo(models.User)
   };

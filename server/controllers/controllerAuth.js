@@ -54,6 +54,7 @@ class ControllerAuth {
         res.status(200).json(user)
       })
       .catch(err => {
+        console.log(err)
         next(err)
       })
   }

@@ -1,15 +1,19 @@
-/* Global */
 * {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-h1,h2,h3,h4,p{
+h1,h2,h3,h4,p,a{
   margin: 0;
   padding: 0;
 }
+a{
+  text-decoration: none !important;
+  cursor: pointer;
+  color: rgb(86, 208, 230) !important;
+}
 body {
-  background : rgb(250, 250, 250);
+  background : rgb(250, 250, 250) !important;
 }
 input{
   border-radius: 2px !important;
@@ -18,7 +22,7 @@ button{
   border-radius: 2px !important;
 }
 textarea{
-  resize: none;
+  resize: none !important;
 }
 .edit-button{
   color: rgba(25, 0, 255, 0.4);
@@ -41,24 +45,24 @@ i{
   width: 400px;
   margin: auto;
   background: rgb(255, 255, 255);
-  padding: 60px 20px;
+  padding: 40px 20px;
   border-radius: 3px;
-  box-shadow: #31B0D5 3px 3px;
+  box-shadow: #31B0D5 5px 5px;
   margin: 20px auto;
 }
 
-/* register section */
+/* register-section */
 .register-section{
   width: 400px;
   margin: auto;
   background: rgb(255, 255, 255);
-  padding: 60px 20px;
+  padding: 40px 20px;
   border-radius: 3px;
-  box-shadow: #286090 3px 3px;
+  box-shadow: #286090 5px 5px;
   margin: 20px auto;
 }
 
-/* main section */
+/* main sectino */
 .box-section{
   display: flex;
   flex-wrap: wrap;
@@ -68,26 +72,29 @@ i{
 .card-section{
   background: rgba(12, 137, 187, 0.5);
   border-radius: 2px;
-  margin: 30px 10px;
+  margin: 40px 10px;
   box-shadow: rgba(9, 107, 146, 0.911) 2px 2px;
   padding-bottom: 3px;
 }
 
-.task-section, textarea{
-  background: rgb(247, 247, 247);
+.task-section{
+  background: rgb(225, 247, 255);
   border-radius: 2px;
   border: none;
-  width: 220px;
+  width: 240px;
   padding: 5px;
   margin: 5px 5px;
+}
+.task-section:hover{
+  background:white;
 }
 .add{
   text-align: center;
   background: rgba(9, 107, 146, 0.3);
-  width: 220px;
-  margin: auto;
+  width: 240px;
+  margin: 5px auto;
   border-radius: 2px;
-  padding:5px 0;
+  padding:8px 0;
 }
 .add:hover{
   background: rgba(9, 107, 146, 0.7);
@@ -95,10 +102,32 @@ i{
   color: white;
 }
 nav{
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
   background: #286090;
   color: white;
   padding:10px 20px;
+}
+
+#title{
+  height: 30px;
+  width: 240px;
+  border-radius: 2px;
+  border:none;
+  padding: 2px 5px;
+  margin:0 5px;
+}
+#description{
+  height: 50px;
+  width: 240px;
+  border-radius: 2px;
+  border:none;
+  padding: 2px 5px;
+  margin:0 5px;
+}
+
+.toggle{
+  margin-bottom: 20px;
+  text-transform: capitalize;
 }

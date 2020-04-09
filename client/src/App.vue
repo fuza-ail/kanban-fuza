@@ -1,14 +1,14 @@
 <template>
   <div>
     <div v-if="token">
-      <MainPage></MainPage>
+      <MainPage :data="dataTask" @emitAdd="getData" @emitDelete="getData"></MainPage>
     </div>
     <div v-else>
       <div v-if="authStatus">
-        <AuthForm :type="'register'" @emitToggle="goToggle" ></AuthForm>
+        <AuthForm :type="'register'" @emitToggle="goToggle"></AuthForm>
       </div>
       <div v-else>
-        <AuthForm :type="'login'" @emitToggle="goToggle" @emitToken="token = $event"></AuthForm>
+        <AuthForm :type="'login'" @emitToggle="goToggle" @emitToken="checkData($event)" ></AuthForm>
       </div>
     </div>
   </div>
@@ -30,7 +30,8 @@
     data() {
       return {
         authStatus: false,
-        token: localStorage.getItem("access_token")
+        token: localStorage.getItem("access_token"),
+        dataTask: []
       };
     },
     methods: {
@@ -42,6 +43,8 @@
         }
       },
       getData() {
+
+        let self = this;
         axios({
           method: "get",
           url: "http://localhost:3000/tasks",
@@ -50,11 +53,16 @@
           }
         })
           .then(function(response) {
-            console.log(response.data);
+            self.dataTask = response.data
+            console.log(response);
           })
           .catch(function(error) {
             console.log(error.response);
           });
+      },
+      checkData(token){
+        this.token = token;
+        this.getData();
       }
     }
   };

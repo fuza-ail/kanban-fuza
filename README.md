@@ -1,6 +1,6 @@
 # kanban
 
-link to app: [https://kanban-fuza.web.app/] (https://kanban-fuza.web.app/)
+link to app: [kanban] (https://kanban-fuza.web.app/)
 
 ---
 ### RESTfull API

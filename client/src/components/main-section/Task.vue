@@ -4,6 +4,7 @@
       <div class="task-section">
         <h3 style="text-transform: capitalize;font-size:1.2em;">{{task.title}}</h3>
         <p>{{task.description}}</p>
+        <p style="color:rgb(85, 85, 85);font-size:0.7em">{{task.email}}</p>
         <span>
           <i class="fas fa-edit edit-button" v-on:click="$emit('emitEdit',task)"></i>
         </span>

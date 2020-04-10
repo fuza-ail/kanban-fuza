@@ -205,6 +205,60 @@
 }
 ```
 
+---
+#### PUT /tasks/:id
+###### edit task
+- Request params:
+```
+{
+    "id": 7
+}
+```
+
+- Request Body:
+```
+{
+	"title" : "backend",
+	"description" : "model generate",
+	"category": "completed"
+}
+```
+
+- Response ( 200 task edited ):
+```
+{
+    "id": 58,
+    "title": "front end",
+    "description": "making reusable component in vue progress",
+    "category": "todo",
+    "UserId": 1,
+    "createdAt": "2020-04-10T11:28:29.522Z",
+    "updatedAt": "2020-04-10T11:28:55.155Z"
+}
+```
+
+- Error Response ( 404 - Task not found ):
+```
+{
+    "message": "Task not found"
+}
+```
+
+- Error Response ( 403 - Unauthorized account ):
+```
+{
+    "message": "Unauthorized account"
+}
+```
+
+- Error Response ( 500 - Internal server error ):
+```
+{
+    "message": "Internal server error"
+}
+```
+
+
 
 
 

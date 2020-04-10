@@ -11,7 +11,7 @@
             <Task v-for="item in value" :key="item.id" :task="item" @emitDelete="$emit('emitDelete')" @emitEdit="editToggle"></Task>
           </div>
           <div v-if="addStatus">
-            <AddForm @emitCancel="cancelToggle" @emitAdd="$emit('emitAdd')" :cat="category"></AddForm>
+            <AddForm @emitCancel="cancelToggle" @emitAdd="$emit('emitAdd')" :cat="category" @emitToggleAdd="cancelToggle"></AddForm>
           </div>
           <div v-if="editStatus">
             <EditForm :data="dataEdit" @emitEdit="$emit('emitEdit')" @emitClearEdit="cancelEdit" @emitCancelEdit="cancelEdit"></EditForm>

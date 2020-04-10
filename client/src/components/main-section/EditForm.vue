@@ -41,6 +41,13 @@ export default {
         }
       })
         .then(function(response) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
           self.$emit("emitEdit");
           self.$emit("emitClearEdit");
         })

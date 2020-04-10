@@ -1,70 +1,130 @@
 <template>
   <div>
-    <div v-if="token">
-      <MainPage :data="dataTask" @emitAdd="getData" @emitDelete="getData" @emitEdit="getData"
-      @emitLogout="checkData"></MainPage>
+    <div v-if="token" >
+      <MainPage
+        :data="categories"
+        @emitAdd="checkData"
+        @emitDelete="checkData"
+        @emitEdit="checkData"
+        @emitLogout="checkData"
+      ></MainPage>
     </div>
     <div v-else>
       <div v-if="authStatus">
-        <AuthForm :type="'register'" @emitToggle="goToggle"
-        @emitRegister="goToggle" @emitGoogle="checkData"></AuthForm>
+        <AuthForm
+          :type="'register'"
+          @emitToggle="goToggle"
+          @emitAfterAction="goToggle"
+          @emitGoogle="checkData"
+        ></AuthForm>
       </div>
       <div v-else>
-        <AuthForm :type="'login'" @emitToggle="goToggle" @emitToken="checkData" @emitGoogle="getData"></AuthForm>
+        <AuthForm
+          :type="'login'"
+          @emitToggle="goToggle"
+          @emitAfterAction="checkData"
+          @emitGoogle="checkData"
+        ></AuthForm>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import AuthForm from "./components/AuthForm";
-  import MainPage from "./components/MainPage";
+import AuthForm from "./components/AuthForm";
+import MainPage from "./components/MainPage";
 
-  export default {
-    name: "App",
-    components: {
-      AuthForm,
-      MainPage
+export default {
+  name: "App",
+  components: {
+    AuthForm,
+    MainPage
+  },
+  created() {
+    this.checkToken();
+    // this.getData();
+  },
+  
+  data() {
+    return {
+      authStatus: false,
+      token: null,
+      dataTask: [],
+      categories: {
+          backlog:[],
+          doing:[],
+          review:[],
+          completed:[]
+        }
+    };
+  },
+  watch: {
+    token: function(newVal, oldVal) {
+      console.log(newVal);
+      console.log(oldVal);
+      this.getData();
+    }
+  },
+  methods: {
+    checkToken(){
+      if(localStorage.getItem('access_token')){
+        this.token = localStorage.getItem("access_token")
+      }
     },
-    created() {
+    goToggle() {
+      if (this.authStatus) {
+        this.authStatus = false;
+      } else {
+        this.authStatus = true;
+      }
+    },
+    getData() {
+      // let self = this;
+      console.log('masuk get')
+      axios({
+        method: "get",
+        url: "http://localhost:3000/tasks",
+        headers: {
+          access_token: this.token
+        }
+      })
+        .then(response => {
+          this.dataTask = response.data;
+          console.log(response);
+          this.passData();
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+        console.log('akhir get')
+    },
+    checkData(token) {
+      this.token = localStorage.getItem('access_token');
       this.getData();
     },
-    data() {
-      return {
-        authStatus: false,
-        token: localStorage.getItem("access_token"),
-        dataTask: [],
-      };
-    },
-    methods: {
-      goToggle() {
-        if (this.authStatus) {
-          this.authStatus = false;
-        } else {
-          this.authStatus = true;
+    passData: function(){
+        console.log('masuk pass data')
+        this.categories = {
+          backlog:[],
+          doing:[],
+          review:[],
+          completed:[]
         }
-      },
-      getData() {
-        let self = this;
-        axios({
-          method: "get",
-          url: "http://localhost:3000/tasks",
-          headers: {
-            access_token: this.token
+        this.dataTask.forEach(el=>{
+
+          for(let key in this.categories){
+            if(el.category == key){
+              this.categories[key].push({
+                id: el.id,
+                title: el.title,
+                description: el.description,
+                email:el.User.email
+              })
+            }
           }
         })
-          .then(function(response) {
-            self.dataTask = response.data
-            console.log(response);
-          })
-          .catch(function(error) {
-            console.log(error.response);
-          });
-      },
-      checkData(token){
-        this.token = token;
-        this.getData();
+        console.log('akhir pass data')
       }
-    }
-  };
+  }
+};
 </script>

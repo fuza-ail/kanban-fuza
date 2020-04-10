@@ -24,7 +24,7 @@ export default {
             .then(function(response) {
               localStorage.setItem("access_token", response.data.access_token);
               localStorage.setItem("user",response.data.email)
-              self.$emit("emitGoogle",response.data.access_token);
+              self.$emit("emitGoogle");
             })
             .catch(function(error) {
               console.log(error.response);

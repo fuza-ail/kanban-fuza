@@ -29,7 +29,6 @@ class ControllerTask{
   static deleteTask(req,res,next){
     Task.findByPk(req.params.id)
     .then(task=>{
-      console.log(task)
       return Task.destroy({where: {id:req.params.id}})
     })
     .then(data=>{
@@ -43,7 +42,6 @@ class ControllerTask{
   static editTask(req,res,next){
     Task.findByPk(req.params.id)
     .then(task=>{
-      console.log(task)
       return Task.update({
         title: req.body.title,
         description: req.body.description,

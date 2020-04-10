@@ -61,7 +61,6 @@ class ControllerAuth {
   static loginGoogle(req, res, next) {
     const token = req.body.token;
     let userData = {}
-    console.log('masuk',token)
     client.verifyIdToken({
       idToken: token,
       audience: process.env.CLIENT_ID
@@ -90,7 +89,6 @@ class ControllerAuth {
         })
       })
       .catch(err=>{
-        console.log('google server error')
         next(err)
       })
   }

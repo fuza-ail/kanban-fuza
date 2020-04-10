@@ -6,20 +6,11 @@
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
-  },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "username": "brrhywlhsxkuke",
+    "password": "0967515d8f41847f8e3399af2cbe271c41cf18591cdca1d628b9a31471a6bec4",
+    "database": "d5s3fe7dc5draa",
+    "host": "ec2-52-71-85-210.compute-1.amazonaws.com",
+    "dialect": "postgres"
   }
 }

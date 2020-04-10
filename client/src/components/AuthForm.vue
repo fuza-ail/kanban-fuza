@@ -91,6 +91,13 @@ export default {
         })
           .then(function(response) {
             // console.log(response);
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Account created",
+              showConfirmButton: false,
+              timer: 1500
+            });
             self.$emit("emitAfterAction");
           })
           .catch(function(error) {

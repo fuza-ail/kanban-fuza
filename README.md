@@ -1,5 +1,7 @@
 # kanban
 
+link to app: [https://kanban-fuza.web.app/] (https://kanban-fuza.web.app/)
+
 ---
 ### RESTfull API
 

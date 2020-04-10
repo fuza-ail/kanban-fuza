@@ -1,5 +1,5 @@
 const express = require('express');
-const PORT = 3000;
+const port = process.env.PORT || 3000;
 const app = express();
 const router = require('./routes');
 const cors = require('cors')
@@ -11,6 +11,6 @@ app.use(cors())
 app.use(router)
 
 
-app.listen(PORT,()=>{
-  console.log(`Listenging to port ${PORT}`)
+app.listen(port,()=>{
+  console.log(`Listenging to port ${port}`)
 })

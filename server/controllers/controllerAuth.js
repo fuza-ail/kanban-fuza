@@ -6,7 +6,6 @@ const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(process.env.CLIENT_ID);
 
 class ControllerAuth {
-
   // LOGIN
   static login(req, res, next) {
     User.findOne({
@@ -51,10 +50,9 @@ class ControllerAuth {
     }
     User.create(dataUser)
       .then(user => {
-        res.status(200).json(user)
+        res.status(201).json(user)
       })
       .catch(err => {
-        console.log(err)
         next(err)
       })
   }
@@ -63,6 +61,7 @@ class ControllerAuth {
   static loginGoogle(req, res, next) {
     const token = req.body.token;
     let userData = {}
+    console.log('masuk',token)
     client.verifyIdToken({
       idToken: token,
       audience: process.env.CLIENT_ID
@@ -91,6 +90,7 @@ class ControllerAuth {
         })
       })
       .catch(err=>{
+        console.log('google server error')
         next(err)
       })
   }

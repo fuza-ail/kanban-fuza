@@ -1,8 +1,8 @@
 <template>
   <div class="main-section">
-    <Navigation></Navigation>
+    <Navigation @emitLogout="$emit('emitLogout')"></Navigation>
     <div class="box-section">
-      <Card v-for="(val,key) in categories" :key="val.id" :category="key" :value="val" @emitAdd="$emit('emitAdd')" @emitDelete="$emit('emitDelete')"></Card>
+      <Card v-for="(val,key) in categories" :key="val.id" :category="key" :value="val" @emitAdd="$emit('emitAdd')" @emitEdit="$emit('emitEdit')" @emitDelete="$emit('emitDelete')"></Card>
 
     </div>
   </div>

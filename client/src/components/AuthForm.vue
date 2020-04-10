@@ -20,21 +20,28 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" placeholder="Password" v-model="password" />
         </div>
-        <button type="submit" class="btn btn-info" style="text-transform:capitalize;">{{ type }}</button>
+        <button type="submit" class="btn btn-info" style="text-transform:capitalize;margin:20px auto">{{ type }}</button>
         <br />
       </form>
+      <!-- google -->
+      <GoogleLogin @emitGoogle="$emit('emitGoogle')"></GoogleLogin>
     </div>
   </div>
 </template>
 
 <script>
+import GoogleLogin from './main-section/GoogleLogin'
+
 export default {
   name: "AuthForm",
+  components:{
+    GoogleLogin
+  },
   data() {
     return {
       email: "",
       password: "",
-      className: "register-section"
+      className: "register-section",
     };
   },
   props: ["type"],
@@ -55,24 +62,28 @@ export default {
           }
         })
           .then(function(response) {
-            localStorage.setItem("access_token",response.data.access_token)
             console.log(response)
+            localStorage.setItem("access_token",response.data.access_token)
+            localStorage.setItem("user",response.data.email)
             self.$emit("emitToken",response.data.access_token)
           })
           .catch(function(error) {
-            console.log(error.response.data);
+            console.log('masuk')
+            console.log(error.response);
           });
       } else {
+        let self = this
         axios({
           method: "post",
           url: "http://localhost:3000/register",
           data: {
             email: this.email,
-            password: this.password
+            password: this.password,
           }
         })
           .then(function(response) {
             console.log(response)
+            self.$emit('emitRegister')
           })
           .catch(function(error) {
             console.log(error.response.data);

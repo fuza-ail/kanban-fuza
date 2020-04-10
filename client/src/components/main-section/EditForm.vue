@@ -31,7 +31,7 @@ export default {
       let self = this;
       axios({
         method: "put",
-        url: `http://localhost:3000/tasks/${this.data.id}`,
+        url: `https://nameless-anchorage-50999.herokuapp.com/tasks/${this.data.id}`,
         headers: {
           access_token: localStorage.getItem("access_token")
         },

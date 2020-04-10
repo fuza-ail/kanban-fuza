@@ -83,7 +83,7 @@ export default {
       console.log('masuk get')
       axios({
         method: "get",
-        url: "http://localhost:3000/tasks",
+        url: "https://nameless-anchorage-50999.herokuapp.com/tasks",
         headers: {
           access_token: this.token
         }

@@ -59,7 +59,7 @@ export default {
         let self = this;
         axios({
           method: "post",
-          url: "http://localhost:3000/login",
+          url: "https://nameless-anchorage-50999.herokuapp.com/login",
           data: {
             email: this.email,
             password: this.password
@@ -83,7 +83,7 @@ export default {
         let self = this;
         axios({
           method: "post",
-          url: "http://localhost:3000/register",
+          url: "https://nameless-anchorage-50999.herokuapp.com/register",
           data: {
             email: this.email,
             password: this.password

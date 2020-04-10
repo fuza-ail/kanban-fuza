@@ -36,7 +36,7 @@ export default {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
           axios({
             method: "delete",
-            url: `http://localhost:3000/tasks/${this.task.id}`,
+            url: `https://nameless-anchorage-50999.herokuapp.com/tasks/${this.task.id}`,
             headers: {
               access_token: localStorage.getItem("access_token")
             }

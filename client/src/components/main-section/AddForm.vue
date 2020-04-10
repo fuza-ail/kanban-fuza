@@ -34,7 +34,7 @@ export default {
       // console.log(this.cat)
       axios({
         method: "post",
-        url: `http://localhost:3000/tasks`,
+        url: `https://nameless-anchorage-50999.herokuapp.com/tasks`,
         data: {
           title: this.title,
           description: this.description,

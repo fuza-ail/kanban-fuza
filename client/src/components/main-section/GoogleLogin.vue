@@ -16,7 +16,7 @@ export default {
           let self = this;
           axios({
             method: "post",
-            url: "http://localhost:3000/loginGoogle",
+            url: "https://nameless-anchorage-50999.herokuapp.com/loginGoogle",
             data: {
               token: GoogleUser.getAuthResponse().id_token
             }

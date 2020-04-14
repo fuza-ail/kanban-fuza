@@ -1,4 +1,5 @@
 # kanban
+Kanban board is a project management tool to help visualize workflow.
 
 link to app: https://kanban-fuza.web.app/
 
@@ -11,17 +12,22 @@ link to app: https://kanban-fuza.web.app/
 - Request Body:
 ```
 {
-	"email": "fuzail@gmail.com",
-	"password":"rahasia"
+	"email": < user email >,
+	"password":< password >
 }
+```
+
+- Request Header:
+```
+    not needed
 ```
 
 - Response ( 201 - created )
 ```
 {
     "id": 23,
-    "email": "muhfu@gmail.com",
-    "password": "$2a$10$qjBnu5jvslKMhFliLShHPONM.HhOvF2pCLS3AkKhkvstZL4u4R1cC",
+    "email": <user email>,
+    "password": <user password>,
     "updatedAt": "2020-04-10T06:26:14.423Z",
     "createdAt": "2020-04-10T06:26:14.423Z",
     "organization": "Hacktiv8"
@@ -48,16 +54,21 @@ link to app: https://kanban-fuza.web.app/
 - Request Body:
 ```
 {
-	"email":"fuzail@gmail.com" ,
-	"password": "rahasdia"
+	"email": < user email > ,
+	"password": < user password >
 }
+```
+
+- Request Header:
+```
+    not needed
 ```
 
 - Response ( 200 - Logged In ):
 ```
 {
     "access_token": <access_token>,
-    "email": "fuzail@gmail.com"
+    "email": < user email >
 }
 ```
 
@@ -78,7 +89,12 @@ link to app: https://kanban-fuza.web.app/
 ---
 #### GET /tasks
 ###### Load all the task
-- Requiest Header:
+- Request Body:
+```
+    not needed
+```
+
+- Request Header:
 ```
 {
     "access_token": <access_token>
@@ -172,6 +188,18 @@ link to app: https://kanban-fuza.web.app/
 ---
 #### DELETE /tasks/:id
 ###### delete task
+- Request body:
+```
+not needed
+```
+
+- Request headers:
+```
+{
+    "access_token": <access_token>
+}
+```
+
 - Request params:
 ```
 {
@@ -214,6 +242,13 @@ link to app: https://kanban-fuza.web.app/
 ```
 {
     "id": 7
+}
+```
+
+- Request headers:
+```
+{
+    "access_token": <access_token>
 }
 ```
 

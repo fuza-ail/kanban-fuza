@@ -1,27 +1,26 @@
-const {Task} = require('../models');
+const { Task } = require('../models');
 
-function authorization(req,res,next){
+function authorization(req, res, next) {
   Task.findByPk(req.params.id)
-  .then(task=>{
-    if(task){
-      if(task.UserId == req.user.UserId){
+    .then(task => {
+      if (task) {
+        if (task.UserId !== req.user.UserId) {
+          throw {
+            status: 403,
+            message: 'Unauthorized account'
+          }
+        }
         next()
-      }else{
+      } else {
         throw {
-          status: 403,
-          message : 'Unauthorized account'
+          status: 404,
+          message: 'Task not found'
         }
       }
-    }else{
-      throw {
-        status : 404,
-        message: 'Task not found'
-      }
-    }
-  })
-  .catch(err=>{
-    next(err)
-  })
+    })
+    .catch(err => {
+      next(err)
+    })
 }
 
 module.exports = authorization
